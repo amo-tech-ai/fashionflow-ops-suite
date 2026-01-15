@@ -114,9 +114,9 @@ export default function Home() {
             {/* Left Content */}
             <div className="space-y-8">
               <div className="animate-slide-up">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-fashion-pink-light border border-accent/20 mb-6">
-                  <Sparkles size={14} className="text-accent" />
-                  <span className="text-sm font-medium text-accent">AI-Powered Operations Platform</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-6">
+                  <Sparkles size={14} className="text-foreground" />
+                  <span className="text-sm font-medium text-foreground">AI-Powered Operations Platform</span>
                 </div>
                 
                 <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight mb-6">
@@ -137,7 +137,7 @@ export default function Home() {
                 </Button>
                 <Button variant="outline" size="lg" asChild className="group">
                   <Link to="/dashboard" className="gap-2">
-                    <Play size={16} className="text-accent" />
+                    <Play size={16} />
                     View platform
                   </Link>
                 </Button>
@@ -195,8 +195,8 @@ export default function Home() {
               {/* Floating stats card */}
               <div className="absolute -bottom-8 -left-8 bg-background rounded-xl shadow-xl p-6 border border-border animate-fade-in" style={{ animationDelay: "0.6s" }}>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-                    <CheckCircle2 className="text-accent" size={24} />
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <CheckCircle2 className="text-foreground" size={24} />
                   </div>
                   <div>
                     <div className="font-display text-2xl font-semibold">98%</div>
@@ -241,17 +241,17 @@ export default function Home() {
             {features.map((feature, index) => (
               <div
                 key={feature.title}
-                className="group relative p-8 bg-background rounded-2xl border border-border hover:border-accent/30 hover:shadow-xl transition-all duration-500"
+                className="group relative p-8 bg-background rounded-2xl border border-border hover:border-foreground/20 hover:shadow-xl transition-all duration-500"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
-                  <feature.icon size={26} className="text-accent group-hover:text-accent-foreground transition-colors" />
+                <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                  <feature.icon size={26} className="text-foreground group-hover:text-primary-foreground transition-colors" />
                 </div>
                 
                 <div className="flex items-center gap-3 mb-3">
                   <h3 className="font-display text-xl font-semibold">{feature.title}</h3>
                   {feature.badge && (
-                    <span className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-accent/10 text-accent font-medium">
+                    <span className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-secondary text-muted-foreground font-medium">
                       {feature.badge}
                     </span>
                   )}
@@ -278,17 +278,17 @@ export default function Home() {
 
           <div className="relative">
             {/* Connector line */}
-            <div className="hidden lg:block absolute top-16 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+            <div className="hidden lg:block absolute top-16 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-border to-transparent" />
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
               {steps.map((step, index) => (
                 <div key={step.step} className="relative text-center lg:text-left">
                   {/* Step number */}
-                  <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-background border-2 border-accent/20 mb-6">
-                    <span className="font-display text-2xl font-bold text-accent">{step.step}</span>
+                  <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-background border-2 border-border mb-6">
+                    <span className="font-display text-2xl font-bold text-foreground">{step.step}</span>
                     {index < steps.length - 1 && (
                       <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2">
-                        <ArrowRight size={16} className="text-accent/40" />
+                        <ArrowRight size={16} className="text-muted-foreground/40" />
                       </div>
                     )}
                   </div>
@@ -330,15 +330,15 @@ export default function Home() {
             {/* Feature callouts */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-6">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-background/90 backdrop-blur-sm text-foreground">
-                <Calendar size={16} className="text-accent" />
+                <Calendar size={16} />
                 <span className="text-sm font-medium">Event Management</span>
               </div>
               <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-background/90 backdrop-blur-sm text-foreground">
-                <Camera size={16} className="text-accent" />
+                <Camera size={16} />
                 <span className="text-sm font-medium">Shoot Tracking</span>
               </div>
               <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-background/90 backdrop-blur-sm text-foreground">
-                <FolderOpen size={16} className="text-accent" />
+                <FolderOpen size={16} />
                 <span className="text-sm font-medium">Asset Library</span>
               </div>
             </div>
@@ -367,8 +367,8 @@ export default function Home() {
                     key={audience.title} 
                     className="flex gap-4 group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
-                      <Star size={18} className="text-accent group-hover:text-accent-foreground transition-colors" />
+                    <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
+                      <Star size={18} className="text-foreground group-hover:text-primary-foreground transition-colors" />
                     </div>
                     <div>
                       <h3 className="font-display text-lg font-semibold mb-1">{audience.title}</h3>
@@ -398,7 +398,7 @@ export default function Home() {
               <div className="absolute -bottom-8 left-4 right-4 lg:-left-8 lg:right-auto lg:max-w-sm bg-background rounded-xl shadow-xl p-6 border border-border">
                 <div className="flex gap-1 mb-3">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} size={14} className="fill-accent text-accent" />
+                    <Star key={i} size={14} className="fill-foreground text-foreground" />
                   ))}
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
@@ -445,15 +445,15 @@ export default function Home() {
             {/* Trust badges */}
             <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-12 border-t border-border">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle2 size={16} className="text-accent" />
+                <CheckCircle2 size={16} />
                 <span>Free to start</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle2 size={16} className="text-accent" />
+                <CheckCircle2 size={16} />
                 <span>No credit card required</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle2 size={16} className="text-accent" />
+                <CheckCircle2 size={16} />
                 <span>Enterprise-ready</span>
               </div>
             </div>
