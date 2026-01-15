@@ -17,9 +17,9 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         // Fashion-specific variants
         hero: "bg-primary text-primary-foreground hover:bg-primary/90 font-medium tracking-wide",
-        accent: "bg-accent text-accent-foreground hover:opacity-90 shadow-accent",
-        "outline-accent": "border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground",
-        minimal: "bg-transparent text-foreground hover:text-accent underline-offset-4 hover:underline",
+        accent: "bg-foreground text-background hover:opacity-90",
+        "outline-accent": "border-2 border-foreground text-foreground hover:bg-foreground hover:text-background",
+        minimal: "bg-transparent text-foreground hover:text-foreground/70 underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",

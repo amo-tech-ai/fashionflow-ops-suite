@@ -61,9 +61,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        fashion: {
-          pink: "hsl(var(--fashion-pink))",
-          "pink-light": "hsl(var(--fashion-pink-light))",
+        highlight: {
+          DEFAULT: "hsl(var(--highlight))",
+          foreground: "hsl(var(--highlight-foreground))",
         },
       },
       borderRadius: {
