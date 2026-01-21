@@ -4,6 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// Auth
+import { AuthProvider } from "@/contexts/AuthContext";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { AuthRedirect } from "@/components/auth/AuthRedirect";
+
 // Layouts
 import { WebsiteLayout } from "@/components/layout/WebsiteLayout";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
@@ -29,6 +34,8 @@ import SettingsPage from "@/pages/dashboard/SettingsPage";
 // Auth pages
 import LoginPage from "@/pages/auth/LoginPage";
 import SignupPage from "@/pages/auth/SignupPage";
+import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";
+import ResetPasswordPage from "@/pages/auth/ResetPasswordPage";
 
 import NotFound from "@/pages/NotFound";
 
@@ -40,36 +47,61 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          {/* Website routes */}
-          <Route element={<WebsiteLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/events" element={<EventsInfoPage />} />
-            <Route path="/shoots" element={<ShootsInfoPage />} />
-            <Route path="/crm" element={<CRMInfoPage />} />
-            <Route path="/ai" element={<AIInfoPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Route>
+        <AuthProvider>
+          <Routes>
+            {/* Website routes - public */}
+            <Route element={<WebsiteLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/events" element={<EventsInfoPage />} />
+              <Route path="/shoots" element={<ShootsInfoPage />} />
+              <Route path="/crm" element={<CRMInfoPage />} />
+              <Route path="/ai" element={<AIInfoPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Route>
 
-          {/* Dashboard routes */}
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="events" element={<EventsPage />} />
-            <Route path="shoots" element={<ShootsPage />} />
-            <Route path="media" element={<MediaPage />} />
-            <Route path="crm" element={<CRMPage />} />
-            <Route path="intelligence" element={<IntelligencePage />} />
-            <Route path="settings" element={<SettingsPage />} />
-          </Route>
+            {/* Dashboard routes - protected */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Dashboard />} />
+              <Route path="events" element={<EventsPage />} />
+              <Route path="shoots" element={<ShootsPage />} />
+              <Route path="media" element={<MediaPage />} />
+              <Route path="crm" element={<CRMPage />} />
+              <Route path="intelligence" element={<IntelligencePage />} />
+              <Route path="settings" element={<SettingsPage />} />
+            </Route>
 
-          {/* Auth routes */}
-          <Route path="/auth/login" element={<LoginPage />} />
-          <Route path="/auth/signup" element={<SignupPage />} />
+            {/* Auth routes - redirect if already authenticated */}
+            <Route
+              path="/auth/login"
+              element={
+                <AuthRedirect>
+                  <LoginPage />
+                </AuthRedirect>
+              }
+            />
+            <Route
+              path="/auth/signup"
+              element={
+                <AuthRedirect>
+                  <SignupPage />
+                </AuthRedirect>
+              }
+            />
+            <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
 
-          {/* Catch-all */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* Catch-all */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
